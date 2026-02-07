@@ -1,0 +1,15 @@
+services:
+  bot:
+    container_name: bot
+    build: ./Dockerfile
+    environment:
+      - BOT_TOKEN=$BOT_TOKEN
+      - DEBUG=$DEBUG
+    ports:
+    - 2332:2332
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /bot
+        - action: rebuild 
