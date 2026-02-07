@@ -4,7 +4,7 @@ from os import getenv
 from core.errors import EnvironmentVariableIsRequired
 
 
-def getenv_or_assert(
+def get_env(
     name: str,
     default: Any = None,
     raise_on_none: bool = False,
@@ -25,4 +25,4 @@ def getenv_or_assert(
         return None
 
 
-__all__ = ("getenv_or_assert",)
+__all__ = ("get_env",)
