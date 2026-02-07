@@ -26,4 +26,6 @@ __all__ = (
     "POSTGRES_USERNAME",
     "POSTGRES_DB",
     "DB_CONNINFO",
+    "LOGGING_FILENAME",
+    "LOGGING_LEVEL",
 )
