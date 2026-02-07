@@ -6,8 +6,8 @@ if [ $DEBUG -eq 0 ]; then
 fi
 if [ $DEBUG -eq 1 ]; then
     echo Starting in debug mode
-    echo Debugpy will listen on $DEBUGPY_PORT
-    python -m debugpy --listen 0.0.0.0:$DEBUGPY_PORT ./main.py
+    echo Debugpy is listening on 3223
+    python -m debugpy --listen 0.0.0.0:3223 ./main.py
 fi
 
 exec "$@"

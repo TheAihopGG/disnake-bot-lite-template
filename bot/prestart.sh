@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 echo Applying migrations
-yoyo apply --database mysql://$MYSQL_USER:$MYSQL_PASSWORD@$MYSQL_HOST:3306/$MYSQL_DATABASE --batch
+yoyo apply --database postgresql://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB --batch
 echo Migrations applied
 exec "$@"
