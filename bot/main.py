@@ -1,4 +1,5 @@
-from disnake.ext.commands import InteractionBot
+from disnake.ext.commands import InteractionBot, CommandSyncFlags
+from disnake import AppCmdInter
 from logging import getLogger
 
 from core.config import BOT_TOKEN
@@ -7,7 +8,7 @@ from core.logging import configure_logging
 configure_logging()
 
 logger = getLogger()
-bot = InteractionBot(sync_commands_debug=True)
+bot = InteractionBot(command_sync_flags=CommandSyncFlags(sync_commands_debug=True))
 bot.load_extensions("cogs")
 
 
