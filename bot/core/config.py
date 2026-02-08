@@ -17,7 +17,6 @@ DB_CONNINFO: str = (
     f"dbname={POSTGRES_DB} password={POSTGRES_PASSWORD} user={POSTGRES_USERNAME} host=postgres port=5432"
 )
 
-LOGGING_FILENAME = BASE_DIR / "logs.log"
 LOGGING_LEVEL: Literal[10, 20, 30, 40, 50] = INFO
 
 __all__ = (
