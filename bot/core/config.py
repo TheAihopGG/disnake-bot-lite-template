@@ -1,5 +1,5 @@
 from typing import Literal
-from logging import DEBUG
+from logging import INFO
 from pathlib import Path
 
 from core.utils import get_env
@@ -18,7 +18,7 @@ DB_CONNINFO: str = (
 )
 
 LOGGING_FILENAME = BASE_DIR / "logs.log"
-LOGGING_LEVEL: Literal[10, 20, 30, 40, 50] = DEBUG
+LOGGING_LEVEL: Literal[10, 20, 30, 40, 50] = INFO
 
 __all__ = (
     "BOT_TOKEN",
