@@ -1,18 +1,22 @@
 services:
   bot:
     container_name: bot
-    build: ./Dockerfile
+    build: ./bot
     environment:
       - BOT_TOKEN=$BOT_TOKEN
       - DEBUG=$DEBUG
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     ports:
     - 2332:2332
     develop:
       watch:
-        - action: sync
-          path: .
+        - action: sync+restart
+          path: ./bot
           target: /bot
-        - action: rebuild 
+    depends_on:
+      - postgres
   postgres:
     image: postgres:alpine
     environment:
@@ -24,7 +28,7 @@ services:
     expose:
       - 5432
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -d $POSTGRES_DB -U $POSTGRES_USER" ]
+      test: [ "CMD-SHELL", "pg_isready -d $POSTGRES_DB -U $POSTGRES_USERNAME" ]
       interval: 5s
       timeout: 3s
       retries: 3
@@ -37,6 +41,9 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
     volumes:
       - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      postgres:
+        condition: service_healthy
 volumes:
   postgres_data:
   pgadmin_data:
