@@ -14,7 +14,7 @@ POSTGRES_USERNAME: str = get_env("POSTGRES_USERNAME", raise_on_none=True)
 POSTGRES_DB: str = get_env("POSTGRES_DB", raise_on_none=True)
 
 DB_CONNINFO: str = (
-    f"postgressql://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@postgres:5432/{POSTGRES_DB}"
+    f"dbname={POSTGRES_DB} password={POSTGRES_PASSWORD} user={POSTGRES_USERNAME} host=postgres port=5432"
 )
 
 LOGGING_FILENAME = BASE_DIR / "logs.log"
