@@ -1,5 +1,4 @@
 from disnake.ext.commands import InteractionBot, CommandSyncFlags
-from disnake import AppCmdInter
 from logging import getLogger
 
 from core.config import BOT_TOKEN
